@@ -1,0 +1,20 @@
+Segment,Label 1,Label 1 Prob,Label 2,Label 2 Prob,Label 3,Label 3 Prob,Label 4,Label 4 Prob,Label 5,Label 5 Prob
+segment_0.wav,Speech,0.13311447,Vehicle,0.12298798,Rail transport,0.12249599,Train,0.11718994,"Railroad car, train wagon",0.080352396
+segment_1.wav,Rail transport,0.3215434,Train,0.30577597,Vehicle,0.28870466,"Railroad car, train wagon",0.20434251,Alarm,0.08147153
+segment_2.wav,Vehicle,0.23280229,Rail transport,0.18679391,Train,0.17948145,"Railroad car, train wagon",0.1124335,Music,0.087380365
+segment_3.wav,Rail transport,0.27298874,Train,0.26884726,Vehicle,0.21991472,Train horn,0.21659112,"Railroad car, train wagon",0.16412534
+segment_4.wav,Vehicle,0.19868797,Music,0.11367168,Rail transport,0.09830489,Train,0.09754236,Train horn,0.072813325
+segment_5.wav,Vehicle,0.17926663,Rail transport,0.11702382,Train,0.10511,"Subway, metro, underground",0.10383563,Bus,0.09802642
+segment_6.wav,Vehicle,0.1515413,"Cattle, bovinae",0.11220789,Speech,0.109310575,Moo,0.094327144,Motor vehicle (road),0.06742412
+segment_7.wav,Music,0.2186224,"Cattle, bovinae",0.09201271,Moo,0.08805322,Animal,0.06446767,"Livestock, farm animals, working animals",0.049369726
+segment_8.wav,Music,0.58339965,"Inside, large room or hall",0.025200248,Door,0.025129138,"Thump, thud",0.019076008,Percussion,0.015804151
+segment_9.wav,Music,0.39359614,Animal,0.0953373,Roar,0.059161842,Percussion,0.056277458,"Roaring cats (lions, tigers)",0.05624949
+segment_10.wav,Music,0.39837655,"Thump, thud",0.049711023,Door,0.043643888,Percussion,0.04179516,Drum,0.04128089
+segment_11.wav,Music,0.2874738,Vehicle,0.07719463,"Roaring cats (lions, tigers)",0.07461676,Roar,0.07133256,Grunt,0.051886175
+segment_12.wav,Music,0.27696508,"Thump, thud",0.103540614,Arrow,0.07913777,Door,0.060190536,"Inside, large room or hall",0.049145304
+segment_13.wav,Music,0.17263871,Sliding door,0.096737616,"Thump, thud",0.0823838,Door,0.07289205,Vehicle,0.061977554
+segment_14.wav,Vehicle,0.4516413,Rail transport,0.21277781,Train,0.19848938,"Railroad car, train wagon",0.12585658,Bus,0.10318691
+segment_15.wav,Vehicle,0.46573427,"Motorboat, speedboat",0.12936814,"Boat, Water vehicle",0.11918139,Car,0.114700004,Motor vehicle (road),0.112301566
+segment_16.wav,Music,0.25482485,"Roaring cats (lions, tigers)",0.11802836,Roar,0.11372414,Animal,0.07463366,Wild animals,0.070980616
+segment_17.wav,Speech,0.25248817,Vehicle,0.0765917,Car,0.06250914,Motor vehicle (road),0.056761146,"Inside, small room",0.038698483
+segment_18.wav,Speech,0.43042806,"Inside, large room or hall",0.041422863,"Inside, small room",0.03661645,Vehicle,0.031028254,Sliding door,0.026074667
