@@ -61,7 +61,7 @@ def classify_audio_segment(segment_path, yamnet_model):
 # Step 5: Main function to process and classify the whole video
 def process_video(mp4_path, yamnet_model, class_names, top_n=3):
     audio_path = "extracted_audio.wav"
-    segments_dir = "audio_segments"
+    segments_dir = "audio_segments_" + mp4_path
     extract_audio_from_video(mp4_path, audio_path)
     split_audio_into_seconds(audio_path, segments_dir)
     results = []
@@ -87,7 +87,7 @@ def process_video(mp4_path, yamnet_model, class_names, top_n=3):
         fieldnames.extend([f"Label {i}", f"Label {i} Prob"])
 
     # Write results to CSV
-    with open("segment_predictions.csv", mode="w", newline="") as csvfile:
+    with open(f"segment_predictions_{mp4_path}.csv", mode="w", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(results)
@@ -95,6 +95,6 @@ def process_video(mp4_path, yamnet_model, class_names, top_n=3):
     print("Results saved to segment_predictions.csv")
 
 if __name__ == "__main__":
-    mp4_file = "penguin30s.mp4"  # Replace with your .mp4 file path
+    mp4_file = "The_Matrix_Revolutions_2003.mkv"  # Replace with your .mp4 file path
     yamnet_model, class_names = load_yamnet_model()
     process_video(mp4_file, yamnet_model, class_names, top_n=5)  # You can change top_n for more labels
