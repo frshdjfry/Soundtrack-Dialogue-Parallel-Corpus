@@ -144,7 +144,6 @@ def main():
     aggregated_segments = load_aggregated_segments(aggregated_path)
 
     # Plot the heatmap for the entire duration (full length)
-    # No second plot for the first 10 minutes, as requested.
     plot_heatmap(
         enhanced_large_df, bin_size=bin_size, aggregated_segments=aggregated_segments,
         title=f'Heatmap of "Music" Label Probabilities \n{film_name}',

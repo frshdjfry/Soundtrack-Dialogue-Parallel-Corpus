@@ -19,17 +19,17 @@ def extract_audio_from_video(mp4_path, output_audio_path):
     video = mp.VideoFileClip(mp4_path)
     video.audio.write_audiofile(output_audio_path)
 
-# Step 2: Split audio into 1-second segments
-def split_audio_into_seconds(audio_path, output_dir):
+# Step 2: Split audio into n-second segments
+def split_audio_into_seconds(audio_path, output_dir, length_ms=2000):
     audio = AudioSegment.from_file(audio_path)
-    one_second_ms = 2000  # 1000 milliseconds = 1 second
-    duration_seconds = len(audio) // one_second_ms
+
+    duration_seconds = len(audio) // length_ms
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
     for i in range(duration_seconds):
-        segment = audio[i * one_second_ms: (i + 1) * one_second_ms]
+        segment = audio[i * length_ms: (i + 1) * length_ms]
         segment.export(os.path.join(output_dir, f"segment_{i}.wav"), format="wav")
 
 # Step 3: Load YAMNet model and class names
@@ -59,11 +59,12 @@ def classify_audio_segment(segment_path, yamnet_model):
     return scores.numpy(), predicted_class_indices
 
 # Step 5: Main function to process and classify the whole video
-def process_video(mp4_path, yamnet_model, class_names, top_n=3):
-    audio_path = "extracted_audio.wav"
-    segments_dir = "audio_segments_" + mp4_path
-    extract_audio_from_video(mp4_path, audio_path)
-    split_audio_into_seconds(audio_path, segments_dir)
+def process_audio(file_path, yamnet_model, class_names, top_n=3):
+
+    segments_dir = "audio_segments_" + file_path
+    # todo: load audio file
+    # todo: split audio into segments and save them in segments_dir folder. use ordered id as file names.
+
     results = []
 
     for filename in sorted(os.listdir(segments_dir), key=natural_sort_key):
@@ -74,7 +75,7 @@ def process_video(mp4_path, yamnet_model, class_names, top_n=3):
             top_classes = [class_names[i] for i in top_indices]
             top_scores = scores.mean(axis=0)[top_indices]
 
-            # Create a row for each segment with segment name, labels, and probabilities
+            # todo: change filename to the id of that segment
             row = {"Segment": filename}
             for i, (class_name, score) in enumerate(zip(top_classes, top_scores), start=1):
                 row[f"Label {i}"] = class_name
@@ -87,7 +88,7 @@ def process_video(mp4_path, yamnet_model, class_names, top_n=3):
         fieldnames.extend([f"Label {i}", f"Label {i} Prob"])
 
     # Write results to CSV
-    with open(f"segment_predictions_{mp4_path}.csv", mode="w", newline="") as csvfile:
+    with open(f"segment_predictions_{file_path}.csv", mode="w", newline="") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(results)
@@ -95,6 +96,6 @@ def process_video(mp4_path, yamnet_model, class_names, top_n=3):
     print("Results saved to segment_predictions.csv")
 
 if __name__ == "__main__":
-    mp4_file = "The_Matrix_Revolutions_2003.mkv"  # Replace with your .mp4 file path
+    file_path = "The_Matrix_Revolutions_2003.mkv"
     yamnet_model, class_names = load_yamnet_model()
-    process_video(mp4_file, yamnet_model, class_names, top_n=5)  # You can change top_n for more labels
+    process_audio(mp4_file, yamnet_model, class_names, top_n=5)
